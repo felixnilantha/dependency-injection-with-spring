@@ -1,17 +1,24 @@
 package com.consciousprogramers.controller;
 
 
+import com.consciousprogramers.service.GreetingService;
+import com.consciousprogramers.service.PrimaryGreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
 
-    public String hello(){
+    private GreetingService greetingService;
 
-        System.out.println("Hello !!!");
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
 
-        return "foo";
+    public String primaryGreet(){
+
+
+        return  greetingService.greetMorning();
     }
 
 
